@@ -1,4 +1,4 @@
-package fr.pizzeria.console;
+package fr.pizzeria.model.Pizza;
 
 public class Pizza {
 
@@ -23,7 +23,7 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	Pizza(int id, String code, String libelle, double prix)
+	public Pizza(int id, String code, String libelle, double prix)
 	{
 		this.id = id;
 		this.code = code;

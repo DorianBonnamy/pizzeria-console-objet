@@ -3,13 +3,30 @@ package fr.pizzeria.console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.pizzeria.model.Pizza.Pizza;
+
 //Cette classe est appelé "PizzeriaAdminConsoleApp" dans le tp
 public class Pizza_shop {
+	 
+	private static Pizza[] pizza = new Pizza[8];
 	
 //	private ArrayList<Pizza> pizza = new ArrayList<Pizza>();
 	
 	public static void main(String args[])
 	{		
+		//region Initialisation tableau
+		
+				
+		pizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
+		pizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
+		pizza[2] = new Pizza(2, "REIN", "Reine", 11.50);
+		pizza[3] = new Pizza(3, "FRO", "Les 4 Fromages", 12.00);
+		pizza[4] = new Pizza(4, "CAN", "La cannibale", 12.50);
+		pizza[5] = new Pizza(5, "SAV", "La savoyade", 13.00);
+		pizza[6] = new Pizza(6, "ORI", "L'orientale", 13.50);
+		pizza[7] = new Pizza(7, "IND", "L'indienne", 14.00);
+		//end region
+		
 		while(true)
 		{
 			Scanner scan = new Scanner(System.in);
@@ -26,6 +43,10 @@ public class Pizza_shop {
 			{
 			case 1:
 				System.out.println("Liste des pizzas");	
+				for(int i = 0; i < pizza.length; i ++)
+				{
+					System.out.println(pizza[i].getCode()+" -> "+pizza[i].getLibelle()+" ("+pizza[i].getPrix()+"€)");
+				}
 //				for(int i = 0; i < pizza.size() ; i++)
 				{
 //					System.out.println(pizza.get(i).getLibelle());
