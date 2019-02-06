@@ -17,6 +17,7 @@ public class Pizza_shop {
 		//region Initialisation tableau
 		boolean working = true;
 				
+		//init tab
 		pizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
 		pizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
 		pizza[2] = new Pizza(2, "REIN", "Reine", 11.50);
@@ -29,6 +30,7 @@ public class Pizza_shop {
 		
 		while(working)
 		{
+			//Menu of the app
 			Scanner scan = new Scanner(System.in);
 			System.out.println("***** Pizzeria Administration *****");
 			System.out.println("1. Liste de pizza");
@@ -41,28 +43,22 @@ public class Pizza_shop {
 			
 			switch(choice_main_menu)
 			{
+			//see the values of pizza's tab
 			case 1:
 				System.out.println("Liste des pizzas");	
 				for(int i = 0; i < pizza.length; i ++)
 				{
 					System.out.println(pizza[i].getCode()+" -> "+pizza[i].getLibelle()+" ("+pizza[i].getPrix()+"€)");
 				}
-//				for(int i = 0; i < pizza.size() ; i++)
-				{
-//					System.out.println(pizza.get(i).getLibelle());
-				}
-//				seePizza();
 				break;
 				
+				//Adding new value inside of the tab
 			case 2:
-				System.out.println("Ajout d'une nouvelle pizza");	
-//				addPizza();				
+				System.out.println("Ajout d'une nouvelle pizza");		
 				System.out.println("Veuillez saisir le code");
 				String code = scan.next();
-				System.out.println();
 				System.out.println("Veuillez rentrer le nom sans espaces");
 				String libelle = scan.next();
-				System.out.println();
 				System.out.println("Veuillez saisir le prix");
 				Double prix = Double.parseDouble(scan.next());
 				Pizza[] temporarypizza = new Pizza[pizza.length+1];
@@ -87,18 +83,18 @@ public class Pizza_shop {
 						break;
 					}
 				}
+				//If i == pizza.length, oldCode is not inside of tab pizza
 				if( i == pizza.length)
 				{
 					System.out.println("Aucune pizza n'a ce code");
 				}
 				else
 				{
+					//Replace the value i. i is the indix of the place where we want to change the values.
 					System.out.println("Veuillez saisir le code");
 					pizza[i].setCode(scan.next());
-					System.out.println();
 					System.out.println("Veuillez rentrer le nom sans espaces");
 					pizza[i].setLibelle(scan.next()); 
-					System.out.println();
 					System.out.println("Veuillez saisir le prix");
 					pizza[i].setPrix(Double.parseDouble(scan.next()));
 				}
@@ -108,6 +104,7 @@ public class Pizza_shop {
 				System.out.println("Suppression d'une pizza");
 				System.out.println("Veuillez entrer le code de la pizza à supprimer");
 				String codeSuppression = scan.next();
+				//Try if "codeSupression" exists in tab pizza
 				int j;
 				for(j = 0; j < pizza.length ; j++)
 				{
@@ -116,6 +113,7 @@ public class Pizza_shop {
 						break;
 					}
 				}
+				/* Replace the old tab by new one*/
 				Pizza[] temporaryPizza = new Pizza[pizza.length-1];
 				for(int k = 0; k < j ; k ++)
 				{
