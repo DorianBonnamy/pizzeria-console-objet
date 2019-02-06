@@ -15,7 +15,7 @@ public class Pizza_shop {
 	public static void main(String args[])
 	{		
 		//region Initialisation tableau
-		
+		boolean working = true;
 				
 		pizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
 		pizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
@@ -27,7 +27,7 @@ public class Pizza_shop {
 		pizza[7] = new Pizza(7, "IND", "L'indienne", 14.00);
 		//end region
 		
-		while(true)
+		while(working)
 		{
 			Scanner scan = new Scanner(System.in);
 			System.out.println("***** Pizzeria Administration *****");
@@ -56,21 +56,83 @@ public class Pizza_shop {
 				
 			case 2:
 				System.out.println("Ajout d'une nouvelle pizza");	
-//				addPizza();
+//				addPizza();				
+				System.out.println("Veuillez saisir le code");
+				String code = scan.next();
+				System.out.println();
+				System.out.println("Veuillez rentrer le nom sans espaces");
+				String libelle = scan.next();
+				System.out.println();
+				System.out.println("Veuillez saisir le prix");
+				Double prix = Double.parseDouble(scan.next());
+				Pizza[] temporarypizza = new Pizza[pizza.length+1];
+				for(int i = 0; i < pizza.length ; i++)
+				{
+					temporarypizza[i] = pizza[i];
+				}
+				temporarypizza[pizza.length] = new Pizza(pizza.length, code, libelle, prix);
+				pizza = temporarypizza;
 				break;
 				
 			case 3:
 				System.out.println("Mise à jour d'une pizza");
 //				modifyPizza();
+				System.out.println("Veuillez entrer le code de la pizza à modifier");
+				String oldCode = scan.next();
+				int i;
+				for(i = 0; i < pizza.length ; i++)
+				{
+					if(pizza[i].getCode().equals(oldCode))
+					{
+						break;
+					}
+				}
+				if( i == pizza.length)
+				{
+					System.out.println("Aucune pizza n'a ce code");
+				}
+				else
+				{
+					System.out.println("Veuillez saisir le code");
+					pizza[i].setCode(scan.next());
+					System.out.println();
+					System.out.println("Veuillez rentrer le nom sans espaces");
+					pizza[i].setLibelle(scan.next()); 
+					System.out.println();
+					System.out.println("Veuillez saisir le prix");
+					pizza[i].setPrix(Double.parseDouble(scan.next()));
+				}
 				break;
 				
 			case 4:
 				System.out.println("Suppression d'une pizza");
+				System.out.println("Veuillez entrer le code de la pizza à supprimer");
+				String codeSuppression = scan.next();
+				int j;
+				for(j = 0; j < pizza.length ; j++)
+				{
+					if(pizza[j].getCode().equals(codeSuppression))
+					{
+						break;
+					}
+				}
+				Pizza[] temporaryPizza = new Pizza[pizza.length-1];
+				for(int k = 0; k < j ; k ++)
+				{
+					temporaryPizza[k] = pizza[k];
+				}
+				for(int k = j+1 ; k < temporaryPizza.length; k ++)
+				{
+					temporaryPizza[k] = pizza[+1];
+				}
+				pizza = temporaryPizza;
 //				deletePizza();
 				break;
-				
+			
 			case 99:
+			default:
 				System.out.println("Au revoir");
+				working = false;
 			}
 		}
 		
