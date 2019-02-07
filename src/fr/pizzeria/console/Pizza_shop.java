@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza.Pizza;
 
-//Cette classe est appelé "PizzeriaAdminConsoleApp" dans le tp
+/**
+ * 
+ * @author DorianBonnamy
+ *	This class is the main class of the application, it contains a menu, a tab of Pizza, and all the functionalities of the app 
+ */
+
 public class Pizza_shop {
 	 
 	private static Pizza[] pizza = new Pizza[8];
