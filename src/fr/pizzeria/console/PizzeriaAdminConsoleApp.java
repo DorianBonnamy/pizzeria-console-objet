@@ -6,7 +6,12 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza.Pizza;
+import fr.pizzeria.service.AjouterPizzaService;
 import fr.pizzeria.service.ListerPizzasService;
+import fr.pizzeria.service.MenuService;
+import fr.pizzeria.service.MenuServiceFactory;
+import fr.pizzeria.service.ModifierPizzaService;
+import fr.pizzeria.service.SupprimerPizzaService;
 
 /**
  * 
@@ -45,67 +50,19 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("4. Supprimer une pizza");
 			System.out.println("99. Quitter l'application");
 			
-			int choice_main_menu = scan.nextInt();
+			int choice_main_menu = scan.nextInt();			
 			
-			switch(choice_main_menu)
-			{
-			//see the values of pizza's tab
-			case 1:
-				
-				/*ListerPizzasService listerpizza = new ListerPizzasService();
-				
-				listerpizza.executeUC(datapizza, scan);*/
-				
-				System.out.println("Liste des pizzas");	
-				Pizza[] pizza = datapizza.findAllPizzas();
-				for(int i = 0; i < (pizza.length); i ++)
-				{
-					System.out.println(pizza[i].getCode()+" -> "+pizza[i].getLibelle()+" ("+pizza[i].getPrix()+"€)");
-				}
-				break;
-				
-				//Adding new value inside of the tab
-			case 2:
-				System.out.println("Ajout d'une nouvelle pizza");		
-				System.out.println("Veuillez saisir le code");
-				String code = scan.next();
-				System.out.println("Veuillez rentrer le nom sans espaces");
-				String libelle = scan.next();
-				System.out.println("Veuillez saisir le prix");
-				Double prix = Double.parseDouble(scan.next());
-				//New version for adding Pizza
-				datapizza.saveNewPizza( new Pizza(datapizza.findAllPizzas().length, code, libelle, prix));
-				break;
-				
-			case 3:
-				System.out.println("Mise à jour d'une pizza");
-				System.out.println("Veuillez entrer le code de la pizza à modifier");
-				String oldCode = scan.next();
-				
-				//create new Pizza to store the next value
-				Pizza temporaryPizza = new Pizza();
-				System.out.println("Veuillez saisir le code");
-				temporaryPizza.setCode(scan.next());
-				System.out.println("Veuillez rentrer le nom sans espaces");
-				temporaryPizza.setLibelle(scan.next()); 
-				System.out.println("Veuillez saisir le prix");
-				temporaryPizza.setPrix(Double.parseDouble(scan.next()));
-				datapizza.updatePizza(oldCode,temporaryPizza);
-				
-				break;
-				
-			case 4:
-				System.out.println("Suppression d'une pizza");
-				System.out.println("Veuillez entrer le code de la pizza à supprimer");
-				String codeSuppression = scan.next();
-				datapizza.deletePizza(codeSuppression);
-				break;
+			MenuService service = MenuServiceFactory.getService(choice_main_menu);
 			
-			case 99:
-			default:
-				System.out.println("Au revoir");
-				working = false;
+			if(service != null) {
+				service.executeUC(datapizza, scan);
 			}
+			else if(choice_main_menu == 99)
+			{
+				System.out.println("Au revoir :(");
+				working = false;				
+			}
+			
 		}
 	}	
 }
