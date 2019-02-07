@@ -1,5 +1,6 @@
 package fr.pizzeria.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
@@ -11,10 +12,10 @@ public class ListerPizzasService extends MenuService {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Liste des pizzas");	
-		Pizza[] pizza = datapizza.findAllPizzas();
-		for(int i = 0; i < (pizza.length); i ++)
+		List<Pizza> pizza = datapizza.findAllPizzas();
+		for(int i = 0; i < (pizza.size()); i ++)
 		{
-			System.out.println(pizza[i].getCode()+" -> "+pizza[i].getLibelle()+" ("+pizza[i].getPrix()+"€)");
+			System.out.println(pizza.get(i).getPizza());
 		}
 	}
 }

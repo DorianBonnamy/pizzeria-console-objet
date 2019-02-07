@@ -90,5 +90,10 @@ public final class Pizza {
 	{
 		return prix;
 	}
+	
+	public String getPizza()
+	{
+		return code+", "+libelle+", "+Double.toString(prix)+"€";
+	}
 	//end region
 }

@@ -19,7 +19,7 @@ public class AjouterPizzaService extends MenuService {
 		System.out.println("Veuillez saisir le prix");
 		Double prix = Double.parseDouble(scan.next());
 		//New version for adding Pizza
-		datapizza.saveNewPizza( new Pizza(datapizza.findAllPizzas().length, code, libelle, prix));
+		datapizza.saveNewPizza( new Pizza(datapizza.findAllPizzas().size(), code, libelle, prix));
 	}
 
 }

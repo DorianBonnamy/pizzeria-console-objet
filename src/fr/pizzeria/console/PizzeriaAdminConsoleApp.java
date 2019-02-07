@@ -1,17 +1,11 @@
 package fr.pizzeria.console;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza.Pizza;
-import fr.pizzeria.service.AjouterPizzaService;
-import fr.pizzeria.service.ListerPizzasService;
 import fr.pizzeria.service.MenuService;
 import fr.pizzeria.service.MenuServiceFactory;
-import fr.pizzeria.service.ModifierPizzaService;
-import fr.pizzeria.service.SupprimerPizzaService;
 
 /**
  * 
