@@ -14,29 +14,28 @@ import fr.pizzeria.service.MenuServiceFactory;
  */
 
 public class PizzeriaAdminConsoleApp {
-	 
-	private static PizzaMemDao datapizza = new PizzaMemDao();
+
 	
 	public static void main(String args[])
 	{		
 		//region Initialisation tableau
 		boolean working = true;
-				
+		PizzaMemDao dataPizza = new PizzaMemDao();
 		//init tab
-		datapizza.saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
-		datapizza.saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
-		datapizza.saveNewPizza(new Pizza("REIN", "Reine", 11.50));
-		datapizza.saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00));
-		datapizza.saveNewPizza(new Pizza("CAN", "La cannibale", 12.50));
-		datapizza.saveNewPizza(new Pizza("SAV", "La savoyade", 13.00));
-		datapizza.saveNewPizza(new Pizza("ORI", "L'orientale", 13.50));
-		datapizza.saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
+		dataPizza.saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
+		dataPizza.saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
+		dataPizza.saveNewPizza(new Pizza("REIN", "Reine", 11.50));
+		dataPizza.saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00));
+		dataPizza.saveNewPizza(new Pizza("CAN", "La cannibale", 12.50));
+		dataPizza.saveNewPizza(new Pizza("SAV", "La savoyade", 13.00));
+		dataPizza.saveNewPizza(new Pizza("ORI", "L'orientale", 13.50));
+		dataPizza.saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
 		//end region
-		
+		Scanner scan = new Scanner(System.in);
 		while(working)
 		{
 			//Menu of the app
-			Scanner scan = new Scanner(System.in);
+			
 			System.out.println("***** Pizzeria Administration *****");
 			System.out.println("1. Liste de pizza");
 			System.out.println("2. Ajouter une nouvelle pizza");
@@ -44,19 +43,19 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("4. Supprimer une pizza");
 			System.out.println("99. Quitter l'application");
 			
-			int choice_main_menu = scan.nextInt();			
+			int choiceMainMenu = scan.nextInt();			
 			
-			MenuService service = MenuServiceFactory.getService(choice_main_menu);
+			MenuService service = MenuServiceFactory.getService(choiceMainMenu);
 			
 			if(service != null) {
-				service.executeUC(datapizza, scan);
+				service.executeUC(dataPizza, scan);
 			}
-			else if(choice_main_menu == 99)
+			else if(choiceMainMenu == 99)
 			{
 				System.out.println("Au revoir :(");
 				working = false;				
-			}
-			
+			}			
 		}
+		scan.close();
 	}	
 }

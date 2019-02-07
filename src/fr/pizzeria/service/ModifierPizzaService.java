@@ -5,10 +5,10 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza.Pizza;
 
-public class ModifierPizzaService extends MenuService {
+class ModifierPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(IPizzaDao datapizza, Scanner scan) {
+	public void executeUC(IPizzaDao dataPizza, Scanner scan) {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Mise à jour d'une pizza");
@@ -16,14 +16,16 @@ public class ModifierPizzaService extends MenuService {
 		String oldCode = scan.next();
 		
 		//create new Pizza to store the next value
-		Pizza temporaryPizza = new Pizza();
+		
 		System.out.println("Veuillez saisir le code");
-		temporaryPizza.setCode(scan.next());
+		String code = scan.next();
 		System.out.println("Veuillez rentrer le nom sans espaces");
-		temporaryPizza.setLibelle(scan.next()); 
+		String libelle = scan.next(); 
 		System.out.println("Veuillez saisir le prix");
-		temporaryPizza.setPrix(Double.parseDouble(scan.next()));
-		datapizza.updatePizza(oldCode,temporaryPizza);
+		Double prix = Double.parseDouble(scan.next());
+		
+		Pizza temporaryPizza = new Pizza(code, libelle, prix);
+		dataPizza.updatePizza(oldCode,temporaryPizza);
 	}
 
 }

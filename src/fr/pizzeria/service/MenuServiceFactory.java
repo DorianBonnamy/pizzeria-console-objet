@@ -1,8 +1,5 @@
 package fr.pizzeria.service;
 
-import java.util.Scanner;
-
-import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.service.AjouterPizzaService;
 import fr.pizzeria.service.ListerPizzasService;
 import fr.pizzeria.service.ModifierPizzaService;
@@ -10,10 +7,8 @@ import fr.pizzeria.service.SupprimerPizzaService;
 
 public class MenuServiceFactory {
 	
-	public static MenuService getService(int choice_main_menu) {
-		// TODO Auto-generated constructor stub
-		
-		switch(choice_main_menu){
+	public static MenuService getService(int choiceMainMenu) {		
+		switch(choiceMainMenu){
 		//see the values of pizza's tab
 		case 1:		
 			return  new ListerPizzasService();
@@ -29,8 +24,7 @@ public class MenuServiceFactory {
 			
 		case 4:
 			
-			return new SupprimerPizzaService();
-	
+			return new SupprimerPizzaService();	
 		
 		}
 		return null;

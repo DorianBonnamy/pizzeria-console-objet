@@ -8,7 +8,7 @@ import fr.pizzeria.model.Pizza.Pizza;
 public class AjouterPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(IPizzaDao datapizza, Scanner scan) {
+	public void executeUC(IPizzaDao dataPizza, Scanner scan) {
 		// TODO Auto-generated method stub
 
 		System.out.println("Ajout d'une nouvelle pizza");		
@@ -19,7 +19,7 @@ public class AjouterPizzaService extends MenuService {
 		System.out.println("Veuillez saisir le prix");
 		Double prix = Double.parseDouble(scan.next());
 		//New version for adding Pizza
-		datapizza.saveNewPizza( new Pizza(datapizza.findAllPizzas().size(), code, libelle, prix));
+		dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix));
 	}
 
 }

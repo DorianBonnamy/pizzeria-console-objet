@@ -13,16 +13,6 @@ public final class Pizza {
 	private String libelle;
 	private double prix;
 	
-	
-	//region CONSTRUCTOR
-	public Pizza()
-	{
-		id = 0;
-		code = null;
-		libelle = null;
-		prix = 0.0;
-	}
-
 	public Pizza( String code, String libelle, double prix)
 	{
 		this.code = code;
@@ -92,6 +82,13 @@ public final class Pizza {
 	public String getPizza()
 	{
 		return code+", "+libelle+", "+Double.toString(prix)+"€";
+	}
+	
+	public void setPizza(String code, String libelle, Double prix)
+	{
+		this.code = code;
+		this.libelle = libelle;
+		this.prix = prix;
 	}
 	//end region
 }

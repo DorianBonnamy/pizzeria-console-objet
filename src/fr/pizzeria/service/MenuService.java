@@ -6,6 +6,6 @@ import fr.pizzeria.dao.IPizzaDao;
 
 public abstract class MenuService {
 
-	public abstract void executeUC(IPizzaDao datapizza, Scanner scan);
+	public abstract void executeUC(IPizzaDao dataPizza, Scanner scan);
 	
 }
