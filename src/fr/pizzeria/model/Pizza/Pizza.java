@@ -1,7 +1,5 @@
 package fr.pizzeria.model.Pizza;
 
-import java.text.DecimalFormat;
-
 /**
  * 
  * @author DorianBonnamy
