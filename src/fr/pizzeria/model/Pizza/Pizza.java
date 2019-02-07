@@ -14,7 +14,7 @@ public final class Pizza {
 	private String code;
 	private String libelle;
 	private double prix;
-	private DecimalFormat mode_affichage = new DecimalFormat("#.##");
+	
 	
 	//region CONSTRUCTOR
 	public Pizza()
@@ -39,9 +39,23 @@ public final class Pizza {
 		this.libelle = libelle;
 		this.prix = prix;
 	}
+	
+	public Pizza(Pizza pizza)
+	{
+		this.code = pizza.getCode();
+		this.libelle = pizza.getLibelle();
+		this.prix = pizza.getPrix();
+		
+	}
+	
 	//end region
 	
 	//region GETTER/SETTER
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+	
 	public void setCode(String code)
 	{
 		this.code = code;
@@ -72,9 +86,9 @@ public final class Pizza {
 		return libelle;
 	}
 	
-	public String getPrix()
+	public Double getPrix()
 	{
-		return mode_affichage.format(prix);
+		return prix;
 	}
 	//end region
 }
