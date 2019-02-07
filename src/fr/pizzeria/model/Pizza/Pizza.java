@@ -1,11 +1,20 @@
 package fr.pizzeria.model.Pizza;
 
-public class Pizza {
+import java.text.DecimalFormat;
+
+/**
+ * 
+ * @author DorianBonnamy
+ *	This class store data for each Pizza
+ */
+
+public final class Pizza {
 
 	private int id;
 	private String code;
 	private String libelle;
 	private double prix;
+	private DecimalFormat mode_affichage = new DecimalFormat("#.##");
 	
 	//region CONSTRUCTOR
 	public Pizza()
@@ -63,9 +72,9 @@ public class Pizza {
 		return libelle;
 	}
 	
-	public double getPrix()
+	public String getPrix()
 	{
-		return prix;
+		return mode_affichage.format(prix);
 	}
 	//end region
 }
