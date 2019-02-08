@@ -14,5 +14,4 @@ class SupprimerPizzaService extends MenuService{
 		String codeSuppression = scan.next();
 		dataPizza.deletePizza(codeSuppression);
 	}
-
 }

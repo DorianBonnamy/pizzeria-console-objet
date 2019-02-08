@@ -12,80 +12,67 @@ public final class Pizza {
 	private String code;
 	private String libelle;
 	private double prix;
-	
-	public Pizza( String code, String libelle, double prix)
-	{
+
+	public Pizza( String code, String libelle, double prix){
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
 	}
 
-	public Pizza(int id, String code, String libelle, double prix)
-	{
+	public Pizza(int id, String code, String libelle, double prix){
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
 	}
-	
-	public Pizza(Pizza pizza)
-	{
+
+	public Pizza(Pizza pizza){
 		this.code = pizza.getCode();
 		this.libelle = pizza.getLibelle();
 		this.prix = pizza.getPrix();
-		
+
 	}
-	
+
 	//end region
-	
+
 	//region GETTER/SETTER
-	public void setId(int id)
-	{
+	public void setId(int id){
 		this.id = id;
 	}
-	
-	public void setCode(String code)
-	{
+
+	public void setCode(String code){
 		this.code = code;
 	}
-	
-	public void setLibelle(String libelle)
-	{
+
+	public void setLibelle(String libelle){
 		this.libelle = libelle;
 	}
-	
-	public void setPrix(double prix)
-	{
+
+	public void setPrix(double prix){
 		this.prix = prix;
 	}
-	
-	public int getId()
-	{
+
+	public int getId(){
 		return id;
 	}
-	
-	public String getCode()
-	{
+
+	public String getCode(){
 		return code;
 	}
-	
-	public String getLibelle()
-	{
+
+	public String getLibelle(){
 		return libelle;
 	}
-	
-	public Double getPrix()
-	{
+
+	public Double getPrix(){
 		return prix;
 	}
-	
-	public String getPizza()
-	{
+
+	public String getPizza(){
 		return code+", "+libelle+", "+Double.toString(prix)+"€";
 	}
-	
-	public void setPizza(String code, String libelle, Double prix)
-	{
+
+	public void setPizza(String code, String libelle, Double prix){
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;

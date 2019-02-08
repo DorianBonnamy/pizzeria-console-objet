@@ -16,8 +16,7 @@ import fr.pizzeria.service.MenuServiceFactory;
 public class PizzeriaAdminConsoleApp {
 
 	
-	public static void main(String args[])
-	{		
+	public static void main(String args[]){		
 		//region Initialisation tableau
 		boolean working = true;
 		PizzaMemDao dataPizza = new PizzaMemDao();
@@ -32,8 +31,7 @@ public class PizzeriaAdminConsoleApp {
 		dataPizza.saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
 		//end region
 		Scanner scan = new Scanner(System.in);
-		while(working)
-		{
+		while(working){
 			//Menu of the app
 			
 			System.out.println("***** Pizzeria Administration *****");
@@ -50,8 +48,7 @@ public class PizzeriaAdminConsoleApp {
 			if(service != null) {
 				service.executeUC(dataPizza, scan);
 			}
-			else if(choiceMainMenu == 99)
-			{
+			else if(choiceMainMenu == 99){
 				System.out.println("Au revoir :(");
 				working = false;				
 			}			
