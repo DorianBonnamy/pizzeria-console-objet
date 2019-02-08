@@ -1,5 +1,10 @@
 package fr.pizzeria.exception;
 
+/**
+ * @class class mother for exception treatment
+ * @author Dorian Bonnamy
+ *
+ */
 
 public abstract class StockageException extends Exception{
 

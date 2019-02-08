@@ -1,19 +1,26 @@
 package fr.pizzeria.model.Pizza;
 
 /**
- * 
+ * This class store data for each Pizza
  * @author DorianBonnamy
- *	This class store data for each Pizza
+ * 	nbPizza is the total of all Pizza which have been add.
+ *	id is the index of the Pizza
+ *	code is the code to identify the Pizza
+ *	libelle is the name of the Pizza
+ *	prix is the price of the Pizza
  */
 
 public final class Pizza {
 
+	public static int nbPizza;
+	
 	private int id;
 	private String code;
 	private String libelle;
 	private double prix;
 
 	public Pizza( String code, String libelle, double prix){
+		id = nbPizza++;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;

@@ -3,14 +3,16 @@ package fr.pizzeria.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza.Pizza;
 
 public class PizzaMemDao implements IPizzaDao{
 
 	private List<Pizza> pizza = new ArrayList<Pizza>();
 	
-	public PizzaMemDao() throws StockageException {
+	public PizzaMemDao() throws SavePizzaException {
 		saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
 		saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
 		saveNewPizza(new Pizza("REIN", "Reine", 11.50));
@@ -30,12 +32,12 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public void saveNewPizza(Pizza newPizza)  throws StockageException{
+	public void saveNewPizza(Pizza newPizza)  throws SavePizzaException{
 		pizza.add(newPizza);		
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza)  throws StockageException{
+	public void updatePizza(String codePizza, Pizza pizza)  throws UpdatePizzaException{
 		for(int i = 0; i < this.pizza.size() ; i++)
 		{
 			if(this.pizza.get(i).getCode().equals(codePizza))
@@ -47,7 +49,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public void deletePizza(String codePizza)  throws StockageException{
+	public void deletePizza(String codePizza)  throws DeletePizzaException{
 		int j;
 		for(j = 0; j < this.pizza.size() ; j++)
 		{
@@ -60,7 +62,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public Pizza findPizzaByCode(String codePizza)  throws StockageException{
+	public Pizza findPizzaByCode(String codePizza)  throws DeletePizzaException{
 		for(int i = 0; i < this.pizza.size() ; i++)
 		{
 			if(this.pizza.get(i).getCode().equals(codePizza))
@@ -72,7 +74,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public boolean pizzaExists(String codePizza) throws StockageException{
+	public boolean pizzaExists(String codePizza) throws DeletePizzaException{
 		if(findPizzaByCode(codePizza) != null)
 		{
 			return true;

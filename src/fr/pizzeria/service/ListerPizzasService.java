@@ -5,6 +5,14 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza.Pizza;
+
+/**
+ * This class is a service which herite from the class MenuService.
+ * This class permit to see all Pizzas inside of the Pizza's List
+ * @author DorianBonnamy
+ *
+ */
+
 class ListerPizzasService extends MenuService {
 
 	@Override

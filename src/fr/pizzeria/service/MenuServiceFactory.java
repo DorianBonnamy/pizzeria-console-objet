@@ -5,6 +5,12 @@ import fr.pizzeria.service.ListerPizzasService;
 import fr.pizzeria.service.ModifierPizzaService;
 import fr.pizzeria.service.SupprimerPizzaService;
 
+/**
+ * This class permit to return the girl's Service from MenuService and init the value MenuService which call that function
+ * @author DorianBonnamy
+ *
+ */
+
 public class MenuServiceFactory {
 	
 	public static MenuService getService(int choiceMainMenu) {		

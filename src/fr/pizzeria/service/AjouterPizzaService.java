@@ -6,6 +6,13 @@ import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza.Pizza;
 
+/**
+ * This class is a service which herite from the class MenuService.
+ * This class permit to add a new Pizza inside of the Pizza's List
+ * @author DorianBonnamy
+ *
+ */
+
 public class AjouterPizzaService extends MenuService {
 
 	@Override
