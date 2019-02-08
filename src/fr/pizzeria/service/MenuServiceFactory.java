@@ -14,16 +14,13 @@ public class MenuServiceFactory {
 			return  new ListerPizzasService();
 
 			//Adding new value inside of the tab
-		case 2:
-			
+		case 2:			
 			return new AjouterPizzaService();
 			
-		case 3:
-			
+		case 3:			
 			return new ModifierPizzaService();
 			
-		case 4:
-			
+		case 4:			
 			return new SupprimerPizzaService();	
 		
 		}

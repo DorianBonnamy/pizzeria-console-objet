@@ -3,7 +3,10 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaMemDao;
-import fr.pizzeria.model.Pizza.Pizza;
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.service.MenuService;
 import fr.pizzeria.service.MenuServiceFactory;
 
@@ -16,19 +19,18 @@ import fr.pizzeria.service.MenuServiceFactory;
 public class PizzeriaAdminConsoleApp {
 
 	
-	public static void main(String args[]){		
+	public static void main(String args[]) {		
 		//region Initialisation tableau
 		boolean working = true;
-		PizzaMemDao dataPizza = new PizzaMemDao();
+		PizzaMemDao dataPizza = null;
+		try {
+			dataPizza = new PizzaMemDao();
+		} catch (StockageException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//init tab
-		dataPizza.saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
-		dataPizza.saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
-		dataPizza.saveNewPizza(new Pizza("REIN", "Reine", 11.50));
-		dataPizza.saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00));
-		dataPizza.saveNewPizza(new Pizza("CAN", "La cannibale", 12.50));
-		dataPizza.saveNewPizza(new Pizza("SAV", "La savoyade", 13.00));
-		dataPizza.saveNewPizza(new Pizza("ORI", "L'orientale", 13.50));
-		dataPizza.saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
+		
 		//end region
 		Scanner scan = new Scanner(System.in);
 		while(working){
@@ -46,7 +48,20 @@ public class PizzeriaAdminConsoleApp {
 			MenuService service = MenuServiceFactory.getService(choiceMainMenu);
 			
 			if(service != null) {
-				service.executeUC(dataPizza, scan);
+				try{
+					service.executeUC(dataPizza, scan);
+				}catch(SavePizzaException savePizzaException){
+//					savePizzaException.getMessage("Impossible d'ajouter cette pizza dans le tableau");
+					savePizzaException.getMessage();
+				}catch(UpdatePizzaException updatePizzaException){
+					updatePizzaException.getMessage();
+				}catch(DeletePizzaException deletePizzaException){
+					deletePizzaException.getMessage();
+				} catch (StockageException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 			else if(choiceMainMenu == 99){
 				System.out.println("Au revoir :(");

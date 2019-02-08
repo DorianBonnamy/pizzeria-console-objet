@@ -3,14 +3,13 @@ package fr.pizzeria.service;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza.Pizza;
 
 public class AjouterPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(IPizzaDao dataPizza, Scanner scan) {
-		// TODO Auto-generated method stub
-
+	public void executeUC(IPizzaDao dataPizza, Scanner scan) throws StockageException{
 		System.out.println("Ajout d'une nouvelle pizza");		
 		System.out.println("Veuillez saisir le code");
 		String code = scan.next();
@@ -21,5 +20,4 @@ public class AjouterPizzaService extends MenuService {
 		//New version for adding Pizza
 		dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix));
 	}
-
 }

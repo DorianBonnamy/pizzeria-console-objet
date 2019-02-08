@@ -3,11 +3,23 @@ package fr.pizzeria.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza.Pizza;
 
 public class PizzaMemDao implements IPizzaDao{
 
 	private List<Pizza> pizza = new ArrayList<Pizza>();
+	
+	public PizzaMemDao() throws StockageException {
+		saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
+		saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
+		saveNewPizza(new Pizza("REIN", "Reine", 11.50));
+		saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00));
+		saveNewPizza(new Pizza("CAN", "La cannibale", 12.50));
+		saveNewPizza(new Pizza("SAV", "La savoyade", 13.00));
+		saveNewPizza(new Pizza("ORI", "L'orientale", 13.50));
+		saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
+	}
 	
 	/**
 	 * This function return now the tab pizza
@@ -18,13 +30,12 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public void saveNewPizza(Pizza newPizza) {
-		pizza.add(newPizza);
-		
+	public void saveNewPizza(Pizza newPizza)  throws StockageException{
+		pizza.add(newPizza);		
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) {
+	public void updatePizza(String codePizza, Pizza pizza)  throws StockageException{
 		for(int i = 0; i < this.pizza.size() ; i++)
 		{
 			if(this.pizza.get(i).getCode().equals(codePizza))
@@ -36,7 +47,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public void deletePizza(String codePizza) {
+	public void deletePizza(String codePizza)  throws StockageException{
 		int j;
 		for(j = 0; j < this.pizza.size() ; j++)
 		{
@@ -49,7 +60,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public Pizza findPizzaByCode(String codePizza) {
+	public Pizza findPizzaByCode(String codePizza)  throws StockageException{
 		for(int i = 0; i < this.pizza.size() ; i++)
 		{
 			if(this.pizza.get(i).getCode().equals(codePizza))
@@ -61,7 +72,7 @@ public class PizzaMemDao implements IPizzaDao{
 	}
 
 	@Override
-	public boolean pizzaExists(String codePizza) {
+	public boolean pizzaExists(String codePizza) throws StockageException{
 		if(findPizzaByCode(codePizza) != null)
 		{
 			return true;
