@@ -17,7 +17,6 @@ import fr.pizzeria.service.MenuServiceFactory;
  */
 
 public class PizzeriaAdminConsoleApp {
-
 	
 	public static void main(String args[]) {		
 		//region Initialisation tableau
@@ -27,7 +26,7 @@ public class PizzeriaAdminConsoleApp {
 			dataPizza = new PizzaMemDao();
 		} catch (StockageException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 		//init tab
 		
@@ -50,16 +49,8 @@ public class PizzeriaAdminConsoleApp {
 			if(service != null) {
 				try{
 					service.executeUC(dataPizza, scan);
-				}catch(SavePizzaException savePizzaException){
-//					savePizzaException.getMessage("Impossible d'ajouter cette pizza dans le tableau");
-					savePizzaException.getMessage();
-				}catch(UpdatePizzaException updatePizzaException){
-					updatePizzaException.getMessage();
-				}catch(DeletePizzaException deletePizzaException){
-					deletePizzaException.getMessage();
-				} catch (StockageException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				}catch (StockageException e) {
+					e.getMessage();
 				}
 				
 			}
