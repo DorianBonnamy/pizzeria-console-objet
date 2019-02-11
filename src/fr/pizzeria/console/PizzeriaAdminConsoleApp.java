@@ -1,7 +1,8 @@
 package fr.pizzeria.console;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
-
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.service.MenuService;
@@ -17,6 +18,8 @@ public class PizzeriaAdminConsoleApp {
 	
 	public static void main(String args[]) {		
 		//region Initialisation tableau
+		
+		Date d = Calendar.getInstance().getTime();
 		boolean working = true;
 		PizzaMemDao dataPizza = null;
 		try {

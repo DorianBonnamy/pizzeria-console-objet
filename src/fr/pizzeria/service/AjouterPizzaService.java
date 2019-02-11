@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza.CategoriePizza;
 import fr.pizzeria.model.Pizza.Pizza;
 
 /**
@@ -25,6 +26,22 @@ public class AjouterPizzaService extends MenuService {
 		System.out.println("Veuillez saisir le prix");
 		Double prix = Double.parseDouble(scan.next());
 		//New version for adding Pizza
-		dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix));
+		Pizza pizza = new Pizza();
+		CategoriePizza[] value = pizza.getListCategoriePizza();
+		for(int i = 0; i < value.length ; i++)
+		{
+			System.out.println(i+" : "+value[i].getCategoriePizza());
+		}
+		int choiceCategoriePizza = scan.nextInt();
+		CategoriePizza categoriePizza = null;
+		for(int i = 0; i < value.length ; i ++)
+		{
+			if(choiceCategoriePizza == i)
+			{
+				categoriePizza = value[i];
+			}
+		}
+		
+		dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix,categoriePizza));
 	}
 }
