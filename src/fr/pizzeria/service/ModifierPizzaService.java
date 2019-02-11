@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza.CategoriePizza;
 import fr.pizzeria.model.Pizza.Pizza;
 
 /**
@@ -32,7 +33,23 @@ class ModifierPizzaService extends MenuService {
 		System.out.println("Veuillez saisir le prix");
 		Double prix = Double.parseDouble(scan.next());
 		
-		Pizza temporaryPizza = new Pizza(code, libelle, prix);
+		Pizza pizza = new Pizza();
+		CategoriePizza[] tabCategoriePizza = pizza.getListCategoriePizza();
+		for(int i = 0; i < tabCategoriePizza.length ; i++)
+		{
+			System.out.println(i +" : "+tabCategoriePizza[i].getCategoriePizza());
+		}
+		int choiceCategoriePizza = scan.nextInt();
+		CategoriePizza categoriePizza = null;
+		for(int i = 0; i < tabCategoriePizza.length ; i ++)
+		{
+			if(choiceCategoriePizza == i)
+			{
+				categoriePizza = tabCategoriePizza[i];
+			}
+		}
+		
+		Pizza temporaryPizza = new Pizza(code, libelle, prix, categoriePizza);
 		dataPizza.updatePizza(oldCode,temporaryPizza);
 	}
 

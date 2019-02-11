@@ -6,6 +6,7 @@ import java.util.List;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.model.CategoriePizza.CategoriePizza;
 import fr.pizzeria.model.Pizza.Pizza;
 
 public class PizzaMemDao implements IPizzaDao{
@@ -13,14 +14,14 @@ public class PizzaMemDao implements IPizzaDao{
 	private List<Pizza> pizza = new ArrayList<Pizza>();
 	
 	public PizzaMemDao() throws SavePizzaException {
-		saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50));
-		saveNewPizza(new Pizza("MAR", "Margherita", 14.00));
-		saveNewPizza(new Pizza("REIN", "Reine", 11.50));
-		saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00));
-		saveNewPizza(new Pizza("CAN", "La cannibale", 12.50));
-		saveNewPizza(new Pizza("SAV", "La savoyade", 13.00));
-		saveNewPizza(new Pizza("ORI", "L'orientale", 13.50));
-		saveNewPizza(new Pizza("IND", "L'indienne", 14.00));
+		saveNewPizza(new Pizza("PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE ));
+		saveNewPizza(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.POISSON ));
+		saveNewPizza(new Pizza("REIN", "Reine", 11.50, CategoriePizza.SANS_VIANDE ));
+		saveNewPizza(new Pizza("FRO", "Les 4 Fromages", 12.00, CategoriePizza.VIANDE ));
+		saveNewPizza(new Pizza("CAN", "La cannibale", 12.50, CategoriePizza.POISSON ));
+		saveNewPizza(new Pizza("SAV", "La savoyade", 13.00, CategoriePizza.SANS_VIANDE ));
+		saveNewPizza(new Pizza("ORI", "L'orientale", 13.50, CategoriePizza.VIANDE ));
+		saveNewPizza(new Pizza("IND", "L'indienne", 14.00, CategoriePizza.POISSON ));
 	}
 	
 	/**

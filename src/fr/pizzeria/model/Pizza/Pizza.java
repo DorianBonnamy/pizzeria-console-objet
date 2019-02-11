@@ -1,5 +1,7 @@
 package fr.pizzeria.model.Pizza;
 
+import fr.pizzeria.model.CategoriePizza.CategoriePizza;
+
 /**
  * This class store data for each Pizza
  * @author DorianBonnamy
@@ -18,26 +20,38 @@ public final class Pizza {
 	private String code;
 	private String libelle;
 	private double prix;
+	private CategoriePizza categoriePizza;
 
-	public Pizza( String code, String libelle, double prix){
+	public Pizza()
+	{
+		id = nbPizza++;
+		this.code = null;
+		this.libelle = "";
+		this.prix = 0.0;
+		this.categoriePizza = null;
+	}
+	
+	public Pizza( String code, String libelle, double prix, CategoriePizza categoriePizza ){
 		id = nbPizza++;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.categoriePizza = categoriePizza;
 	}
 
-	public Pizza(int id, String code, String libelle, double prix){
+	public Pizza(int id, String code, String libelle, double prix, CategoriePizza categoriePizza){
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.categoriePizza = categoriePizza;
 	}
 
 	public Pizza(Pizza pizza){
 		this.code = pizza.getCode();
 		this.libelle = pizza.getLibelle();
 		this.prix = pizza.getPrix();
-
+		this.categoriePizza = pizza.getCategoriePizza();
 	}
 
 	//end region
@@ -75,8 +89,23 @@ public final class Pizza {
 		return prix;
 	}
 
+	public String toString()
+	{
+		return code+", "+libelle+", "+Double.toString(prix)+"€, "+categoriePizza;
+	}
+	
 	public String getPizza(){
-		return code+", "+libelle+", "+Double.toString(prix)+"€";
+		return code+", "+libelle+", "+Double.toString(prix)+"€, "+categoriePizza;
+	}
+	
+	public CategoriePizza getCategoriePizza()
+	{
+		return categoriePizza;
+	}
+	
+	public CategoriePizza[] getListCategoriePizza()
+	{
+		return CategoriePizza.values();
 	}
 
 	public void setPizza(String code, String libelle, Double prix){
