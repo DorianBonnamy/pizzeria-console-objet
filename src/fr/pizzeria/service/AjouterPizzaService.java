@@ -25,23 +25,14 @@ public class AjouterPizzaService extends MenuService {
 		String libelle = scan.next();
 		System.out.println("Veuillez saisir le prix");
 		Double prix = Double.parseDouble(scan.next());
-		//New version for adding Pizza
-		Pizza pizza = new Pizza();
-		CategoriePizza[] value = pizza.getListCategoriePizza();
-		for(int i = 0; i < value.length ; i++)
+		//New version for adding Pizza;
+		CategoriePizza categoriePizza = Pizza.choiceCategorie(scan);
+		
+		if( categoriePizza != null)
 		{
-			System.out.println(i+" : "+value[i].getCategoriePizza());
-		}
-		int choiceCategoriePizza = scan.nextInt();
-		CategoriePizza categoriePizza = null;
-		for(int i = 0; i < value.length ; i ++)
-		{
-			if(choiceCategoriePizza == i)
-			{
-				categoriePizza = value[i];
-			}
+			dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix,categoriePizza));
 		}
 		
-		dataPizza.saveNewPizza( new Pizza(dataPizza.findAllPizzas().size(), code, libelle, prix,categoriePizza));
+		
 	}
 }
